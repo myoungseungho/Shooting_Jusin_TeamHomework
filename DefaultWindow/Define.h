@@ -6,6 +6,9 @@
 #define PURE		= 0
 
 
+#define			OBJ_NOEVENT	 0
+#define			OBJ_DEAD	 1
+
 template<typename T>
 void Safe_Delete(T& Temp)
 {
@@ -25,6 +28,13 @@ typedef struct tagInfo
 
 }INFO;
 
-
+enum OBJID
+{
+	OBJ_PLAYER,
+	OBJ_BULLET,
+	OBJ_MONSTER,
+	OBJ_MOUSE,
+	OBJ_END
+};
 
 extern HWND g_hWnd;

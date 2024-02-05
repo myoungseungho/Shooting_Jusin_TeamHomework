@@ -16,12 +16,17 @@ void CPlayer::Initialize()
 	m_fSpeed = 10.f;
 }
 
-void CPlayer::Update()
+int CPlayer::Update()
 {
-
 	Key_Input();
 	
 	__super::Update_Rect();	
+
+	return OBJ_NOEVENT;
+}
+
+void CPlayer::Late_Update()
+{
 }
 
 void CPlayer::Render(HDC hDC)
@@ -47,3 +52,5 @@ void CPlayer::Key_Input()
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 		m_tInfo.fY += m_fSpeed;
 }
+
+

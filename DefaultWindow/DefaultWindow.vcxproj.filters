@@ -22,6 +22,18 @@
     <Filter Include="01. Obj\00. Player">
       <UniqueIdentifier>{3d3f9bdc-869a-437d-98e0-9966f4c13ecb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Design">
+      <UniqueIdentifier>{0b2d59f0-333b-4f26-9e58-966bbf2ca98b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Design\CollisionMgr">
+      <UniqueIdentifier>{acbb6138-bc56-47d2-973c-f8b31d928ce4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\01. Bullet">
+      <UniqueIdentifier>{c0b29dc7-2fdf-4a86-9390-32e0718bc1ef}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\02. Moster">
+      <UniqueIdentifier>{2b0ef2e9-c97b-4f9f-b072-2526135cb50f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -51,6 +63,18 @@
     <ClInclude Include="Player.h">
       <Filter>01. Obj\00. Player</Filter>
     </ClInclude>
+    <ClInclude Include="CollisionMgr.h">
+      <Filter>02. Design\CollisionMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="AbstractFactory.h">
+      <Filter>02. Design</Filter>
+    </ClInclude>
+    <ClInclude Include="Monster.h">
+      <Filter>01. Obj\02. Moster</Filter>
+    </ClInclude>
+    <ClInclude Include="Bullet.h">
+      <Filter>01. Obj\01. Bullet</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -67,6 +91,15 @@
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>01. Obj\00. Player</Filter>
+    </ClCompile>
+    <ClCompile Include="CollisionMgr.cpp">
+      <Filter>02. Design\CollisionMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Monster.cpp">
+      <Filter>01. Obj\02. Moster</Filter>
+    </ClCompile>
+    <ClCompile Include="Bullet.cpp">
+      <Filter>01. Obj\01. Bullet</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

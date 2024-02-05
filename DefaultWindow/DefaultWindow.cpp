@@ -54,24 +54,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,				// 메모리에 할당되는 실체, 즉
     MSG msg;
 	msg.message = WM_NULL;
 
-    // 기본 메시지 루프입니다.
-  //  while (GetMessage(&msg, nullptr, 0, 0))
-  //  {
-		//// 메뉴 기능의 단축키가 제대로 작동하도록 검사하는 함수
-  //      if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-  //      {
-		//	// TranslateMessage : 키보드 메시지를 가공하여 프로그램에서 쉽게 사용할 수 있도록 하는 함수
-  //          TranslateMessage(&msg);
-
-		//	// DispatchMessage : 시스템 큐에서 꺼낸 메시지를 프로그램의 메시지 처리 함수(WndProc)에게 전달
-  //          DispatchMessage(&msg);
-  //      }
-  //  }
-
-	// GetTickCount : 운영 체제가 동작된 시점으로부터 흐른 시간을 정수 형태로 반환
-	// 1 / 1000초의 정수 값을 반환하는 함수
-
-	DWORD	dwTime = GetTickCount();	// 500
+	DWORD	dwTime = GetTickCount64();	// 500
 
 	CMainGame		MainGame;
 	MainGame.Initialize();
@@ -94,12 +77,13 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,				// 메모리에 할당되는 실체, 즉
 		}
 		else
 		{
-			if (dwTime + 10 < GetTickCount())	
+			if (dwTime + 10 < GetTickCount64())	
 			{
 				MainGame.Update();
+				MainGame.Late_Update();
 				MainGame.Render();
 
-				dwTime = GetTickCount();
+				dwTime = GetTickCount64();
 			}
 		}
 		
@@ -244,44 +228,7 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 
 	// HDC : 출력에 관한 정보를 갖고 있는 데이터 구조체
 	// GDI가 관리하며 어떤 포인트(점), 선(색상, 굵기, 무늬)에 대한 정보를 DC가 관리
-
- //   case WM_PAINT:
- //       {
- //           PAINTSTRUCT ps;
- //          
-	//		HDC hdc = BeginPaint(hWnd, &ps);		// GetDC : 화면 dc를 얻어오는 함수
-	//				
-	//		Rectangle(hdc, rc.left, rc.top, rc.right, rc.bottom);
-	//		
-	//		for (auto& iter : BulletList)
-	//		{
-	//			Ellipse(hdc, iter.left, iter.top, iter.right, iter.bottom);
-
-	//			iter.top	-= 10;
-	//			iter.bottom -= 10;
-	//		}
-	//		
- //           EndPaint(hWnd, &ps);
- //       }
- //       break;
-
-	//case WM_CREATE:
-
-	//	SetTimer(hWnd, 0, 0, 0);
-	//	// 2 : 타이머 id번호
-	//	// 3 : 타이머 주기 0인 경우 지정되어있는 기본 값 동작(1 /1000초)
-	//	// 4 : null인 경우 3번에 설정한 주기대로 WM_TIMER 메세지를 발생
-	//	break;
-
-	//case WM_TIMER:
-
-	//	InvalidateRect(hWnd, 0, TRUE);
-	//	// 윈도우 화면 갱신 함수 : WM_PAINT 메세지를 발생시킴
-
-	//	// 2 : 윈도우에서 갱신할 범위를 지정, RECT 구조체 주소값을 받음, NULL을 넣으면 전체 화면 영역을 의미
-	//	// 3 : TRUE : 그림이 그려져 있지 않는 부분도 갱신
-	//	//	   FALSE : 그림이 그려진 부분만 갱신
-	//	break;
+ 
 
 	case WM_KEYDOWN:
 
@@ -290,36 +237,11 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		case VK_ESCAPE:
 			PostQuitMessage(0);
 			break;
-
-	/*	case VK_RIGHT:
-			rc.left  += 10;
-			rc.right += 10;
-			break;
-
-		case VK_LEFT :
-			rc.left -= 10;
-			rc.right -= 10;
-			break;
-
-		case VK_UP:
-			rc.top	  -= 10;
-			rc.bottom -= 10;
-			break;
-
-		case VK_DOWN:
-			rc.top += 10;
-			rc.bottom += 10;
-			break;
-
-		case VK_SPACE:
-			BulletList.push_back(rc);
-			break;*/
 		}
 		break;
 
     case WM_DESTROY:
 
-		//KillTimer(hWnd, 0);
 	    PostQuitMessage(0);		 
 	break;
 	
