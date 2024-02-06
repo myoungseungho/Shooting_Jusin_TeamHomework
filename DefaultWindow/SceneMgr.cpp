@@ -1,23 +1,81 @@
 #include "stdafx.h"
 #include "SceneMgr.h"
-#include "SingleTon.h"
+#include "GameMgr.h"
 #include "Define.h"
 
-const int CSceneMgr::m_MaxStage = 3;
-int CSceneMgr::m_currentStage = 1;
-
-
-CSceneMgr::CSceneMgr()
+CSceneMgr* CSceneMgr::m_pInstance = nullptr;
+CSceneMgr::CSceneMgr() : m_currentStage(0), m_MaxStage(3)
 {
 }
 
 CSceneMgr::~CSceneMgr()
 {
+	Release();
+}
+
+void CSceneMgr::Release()
+{
+}
+
+void CSceneMgr::InitCurrentStage()
+{
+	m_currentStage = 0;
+}
+
+void CSceneMgr::DisPlayTitle()
+{
+	HDC m_DC = GetDC(g_hWnd);
+
+	TCHAR	szBuffTitle[32] = L"";
+	TCHAR	szBuffPeople[32] = L"";
+	TCHAR	szBuffReadyTime[32] = L"";
+
+	DWORD tick = GetTickCount64();
+	int iSecond = 5;
+	float fInterval = 1000;
+
+	while (true)
+	{
+		if (fInterval >= 1000)
+		{
+			int iOffsetSecond = iSecond -1;
+			swprintf_s(szBuffTitle, L"팀과제 1 : 슈팅 게임");	// 모든 서식 문자를 지원
+			swprintf_s(szBuffPeople, L" 변수기 강태욱 명승호");	// 모든 서식 문자를 지원
+			swprintf_s(szBuffReadyTime, L"%d", iOffsetSecond);	// 모든 서식 문자를 지원
+			TextOut(m_DC,		// 문자열을 복사할 화면 dc
+				WINCX * 0.5 - 70.f,			// 출력할 윈도우의 x,y 위치를 전달
+				WINCY * 0.5f - 200.f,
+				szBuffTitle,		// 출력할 문자열의 시작 주소
+				lstrlen(szBuffTitle)); // 문자열의 순수 길이
+
+			TextOut(m_DC,		// 문자열을 복사할 화면 dc
+				WINCX * 0.5 - 80.f,			// 출력할 윈도우의 x,y 위치를 전달
+				WINCY * 0.5f - 100.f,
+				szBuffPeople,		// 출력할 문자열의 시작 주소
+				lstrlen(szBuffPeople)); // 문자열의 순수 길이
+
+			TextOut(m_DC,		// 문자열을 복사할 화면 dc
+				WINCX * 0.5,			// 출력할 윈도우의 x,y 위치를 전달
+				WINCY * 0.5f,
+				szBuffReadyTime,		// 출력할 문자열의 시작 주소
+				lstrlen(szBuffReadyTime)); // 문자열의 순수 길이
+
+			fInterval = 0.f;
+			--iSecond;
+			tick = GetTickCount64();
+			continue;
+		}
+
+		fInterval = GetTickCount64() - tick;
+
+		if (iSecond == 0)
+			break;
+	}
 }
 
 void CSceneMgr::DisplayScoreAndStage()
 {
-	int iCurrentScore = CSingleton::GetCurrentScore();
+	int iCurrentScore = CGameMgr::Get_Instance()->GetCurrentScore();
 	HDC m_DC = GetDC(g_hWnd);
 
 	TCHAR	szBuffEnd[32] = L"";
@@ -46,4 +104,24 @@ void CSceneMgr::DisplayScoreAndStage()
 		WINCY * 0.5f,
 		szBuffStage,		// 출력할 문자열의 시작 주소
 		lstrlen(szBuffStage)); // 문자열의 순수 길이
+}
+
+void CSceneMgr::Retry()
+{
+	HDC m_DC = GetDC(g_hWnd);
+	Rectangle(m_DC, 0, 0, WINCX, WINCY);
+
+	m_currentStage = 0;
+	CGameMgr::Get_Instance()->InitCurrentScore();
+	DisplayScoreAndStage();
+	DWORD tick = GetTickCount64();
+	float second = 5;
+	while (true)
+	{
+		float fInterval = GetTickCount64() - tick;
+		if (fInterval >= 1000 * second)
+		{
+			break;
+		}
+	}
 }

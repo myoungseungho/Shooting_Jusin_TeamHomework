@@ -7,7 +7,6 @@
 #include "AbstractFactory.h"
 #include "CollisionMgr.h"
 #include <algorithm>
-#include "SingleTon.h"
 
 class CMainGame
 {

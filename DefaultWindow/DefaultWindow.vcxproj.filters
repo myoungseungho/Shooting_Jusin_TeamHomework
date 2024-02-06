@@ -49,6 +49,9 @@
     <Filter Include="01. Obj\03. Item\02. LifeItem">
       <UniqueIdentifier>{e538b869-8d83-4b75-8b03-abddf15b3035}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Design\ObjMgr">
+      <UniqueIdentifier>{4c54150d-3a7d-4d53-8c18-e563be006605}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -90,7 +93,7 @@
     <ClInclude Include="Bullet.h">
       <Filter>01. Obj\01. Bullet</Filter>
     </ClInclude>
-    <ClInclude Include="SingleTon.h">
+    <ClInclude Include="GameMgr.h">
       <Filter>02. Design\SingletonMgr</Filter>
     </ClInclude>
     <ClInclude Include="SceneMgr.h">
@@ -104,6 +107,9 @@
     </ClInclude>
     <ClInclude Include="LifeItem.h">
       <Filter>01. Obj\03. Item\02. LifeItem</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjMgr.h">
+      <Filter>02. Design\ObjMgr</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -134,7 +140,7 @@
     <ClCompile Include="SceneMgr.cpp">
       <Filter>02. Design\SceneMgr</Filter>
     </ClCompile>
-    <ClCompile Include="SingleTon.cpp">
+    <ClCompile Include="GameMgr.cpp">
       <Filter>02. Design\SingletonMgr</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
@@ -145,6 +151,9 @@
     </ClCompile>
     <ClCompile Include="LifeItem.cpp">
       <Filter>01. Obj\03. Item\02. LifeItem</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjMgr.cpp">
+      <Filter>02. Design\ObjMgr</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "MainGame.h"
 #include "SceneMgr.h"
-
+#include "ObjMgr.h"
 CMainGame::CMainGame()
 	:m_DC(NULL), m_pPlayer(nullptr)
 {
@@ -16,67 +16,35 @@ void CMainGame::Initialize()
 {
 	m_DC = GetDC(g_hWnd);
 
-	//플레이어 생성
-	m_ObjList[OBJ_PLAYER].push_back(CAbstractFactory<CPlayer>::Create());
+	CSceneMgr::Get_Instance()->DisPlayTitle();
+	CSceneMgr::Get_Instance()->Retry();
 
+	//플레이어 생성
+	CObjMgr::Get_Instance()->Add_Object(OBJ_PLAYER, CAbstractFactory<CPlayer>::Create());
 	//몬스터 생성
-	CObj* monster = CAbstractFactory<CMonster>::Create();
+	CObjMgr::Get_Instance()->Add_Object(OBJ_MONSTER, CAbstractFactory<CMonster>::Create());
 
 }
 
 void CMainGame::Update()
 {
-	//일반 Update문을 돌리되, 충돌검사 이후에 해당 OBj가 OBJ_DEAD라면 컨테이너에서 삭제
-	for (unsigned int i = 0; i < OBJ_END; i++)
-	{
-		for (auto iter = m_ObjList[i].begin(); iter != m_ObjList[i].end();)
-		{
-			int iResult = (*iter)->Update();
-			if (iResult == OBJ_DEAD)
-			{
-				Safe_Delete((*iter));
-				iter = m_ObjList[i].erase(iter);
-			}
-			else
-				++iter;
-		}
-	}
+	CObjMgr::Get_Instance()->Update();
 }
 
 void CMainGame::Late_Update()
 {
-	for (size_t i = 0; i < OBJ_END; ++i)
-	{
-		for (auto& iter : m_ObjList[i])
-		{
-			iter->Late_Update();
-		}
-	}
-
-	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_ITEM]);
+	CObjMgr::Get_Instance()->Late_Update();
 }
 
 void CMainGame::Render()
 {
 	Rectangle(m_DC, 0, 0, WINCX, WINCY);
-
-	for (unsigned int i = 0; i < OBJ_END; i++)
-	{
-		for (auto iter : m_ObjList[i])
-		{
-			iter->Render(m_DC);
-		}
-	}
-
-	CSceneMgr::DisplayScoreAndStage();
+	CObjMgr::Get_Instance()->Render(m_DC);
 }
 
 void CMainGame::Release()
 {
-	for (unsigned int i = 0; i < OBJ_END; i++)
-	{
-		for_each(m_ObjList[i].begin(), m_ObjList[i].end(), Safe_Delete<CObj*>);
-	}
+	CObjMgr::Get_Instance()->Release();
 
 	ReleaseDC(g_hWnd, m_DC);
 }
