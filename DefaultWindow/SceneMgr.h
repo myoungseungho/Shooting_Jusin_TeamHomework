@@ -23,23 +23,13 @@ public:
 			m_pInstance = nullptr;
 		}
 	}
-public:
-	void InitCurrentStage();
-	int GetCurrentStage() { return m_currentStage; }
-	void SetCurrentStage(int _iStage)
-	{
-		if (_iStage > m_MaxStage)
-			return;
 
-		m_currentStage = _iStage;
-	}
+public:
 	void DisPlayTitle();
 	void DisplayScoreAndStage();
-	void Retry();
-public:
-	const int m_MaxStage;
+	void DisplayGameOver();
+
 private:
 	static CSceneMgr* m_pInstance;
-	int m_currentStage;
 };
 

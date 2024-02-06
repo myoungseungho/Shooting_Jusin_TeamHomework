@@ -2,8 +2,10 @@
 #include "ObjMgr.h"
 #include "CollisionMgr.h"
 #include "algorithm"
+#include "GameMgr.h"
 
 CObjMgr* CObjMgr::m_pInstance = nullptr;
+
 CObjMgr::CObjMgr()
 {
 }
@@ -19,6 +21,18 @@ void CObjMgr::Add_Object(OBJID eID, CObj* pObj)
 		return;
 
 	m_ObjList[eID].push_back(pObj);
+}
+
+
+
+void CObjMgr::RemoveAllObjectsExceptPlayer()
+{
+	//플레이어는 삭제하면 안됨
+	for (size_t i = OBJ_BULLET; i < OBJ_END; ++i)
+	{
+		for_each(m_ObjList[i].begin(), m_ObjList[i].end(), Safe_Delete<CObj*>);
+		m_ObjList[i].clear();
+	}
 }
 
 int CObjMgr::Update()
@@ -40,11 +54,13 @@ int CObjMgr::Update()
 		}
 	}
 
+
 	return 0;
 }
 
 void CObjMgr::Late_Update()
 {
+
 	for (size_t i = 0; i < OBJ_END; ++i)
 	{
 		for (auto& iter : m_ObjList[i])
@@ -58,6 +74,7 @@ void CObjMgr::Late_Update()
 
 void CObjMgr::Render(HDC hDC)
 {
+
 	for (size_t i = 0; i < OBJ_END; ++i)
 	{
 		for (auto& iter : m_ObjList[i])
@@ -69,6 +86,7 @@ void CObjMgr::Render(HDC hDC)
 
 void CObjMgr::Release()
 {
+	//플레이어는 삭제하면 안됨
 	for (size_t i = 0; i < OBJ_END; ++i)
 	{
 		for_each(m_ObjList[i].begin(), m_ObjList[i].end(), Safe_Delete<CObj*>);

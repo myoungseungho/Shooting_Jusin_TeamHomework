@@ -1,8 +1,11 @@
 #include "stdafx.h"
 #include "GameMgr.h"
+#include "SceneMgr.h"
+#include "Define.h"
+#include "ObjMgr.h"
 
 CGameMgr* CGameMgr::m_pInstance = nullptr;
-CGameMgr::CGameMgr() : m_iCurrentScore(0)
+CGameMgr::CGameMgr() : m_iCurrentScore(0.f), m_MaxStage(SCENE_3), m_currentStage(SCENE_1), bPlayerDie(false)
 {
 }
 
@@ -15,17 +18,28 @@ void CGameMgr::Release()
 {
 }
 
-void CGameMgr::InitCurrentScore()
+
+bool CGameMgr::OnGameEnd()
 {
-	m_iCurrentScore = 1;
+	if (!Check_GameOver())
+		return false;
+
+	//아이템, 적 제거, 불렛 제거
+	CObjMgr::Get_Instance()->RemoveAllObjectsExceptPlayer();
+	//게임 종료 디스플레이
+	CSceneMgr::Get_Instance()->DisplayGameOver();
+	//현재 점수 초기화
+	InitCurrentScore();
+	//현재 스테이지 초기화
+	InitCurrentStage();
+
+	return true;
 }
 
-int CGameMgr::GetCurrentScore()
+bool CGameMgr::Check_GameOver()
 {
-	return m_iCurrentScore;
-}
-
-void CGameMgr::SetCurrentScore(int _iAddScore)
-{
-	m_iCurrentScore += _iAddScore;
+	if (m_currentStage == SCENE_END || bPlayerDie == true)
+		return true;
+	else
+		return false;
 }

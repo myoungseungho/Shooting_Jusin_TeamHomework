@@ -23,7 +23,5 @@ public:
 
 private:
 	HDC			m_DC;
-	CObj*		m_pPlayer;
-	list<CObj*> m_ObjList[OBJ_END];
 };
 

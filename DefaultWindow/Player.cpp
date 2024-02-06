@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
-
+#include "GameMgr.h"
 CPlayer::CPlayer()
 {
 }
@@ -51,6 +51,7 @@ void CPlayer::Key_Input()
 
 	if (GetAsyncKeyState(VK_DOWN) & 0x8000)
 		m_tInfo.fY += m_fSpeed;
+
 }
 
 

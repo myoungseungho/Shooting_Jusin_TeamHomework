@@ -8,11 +8,13 @@ private:
 	~CObjMgr();
 
 public:
-	void	Add_Object(OBJID eID, CObj* pObj);
 	int		Update();
 	void	Late_Update();
 	void	Render(HDC hDC);
 	void	Release();
+public:
+	void    Add_Object(OBJID eID, CObj* pObj);
+	void	RemoveAllObjectsExceptPlayer();
 public:
 	static CObjMgr* Get_Instance()
 	{

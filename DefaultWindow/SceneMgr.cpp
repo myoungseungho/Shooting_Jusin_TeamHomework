@@ -4,7 +4,7 @@
 #include "Define.h"
 
 CSceneMgr* CSceneMgr::m_pInstance = nullptr;
-CSceneMgr::CSceneMgr() : m_currentStage(0), m_MaxStage(3)
+CSceneMgr::CSceneMgr()
 {
 }
 
@@ -15,11 +15,6 @@ CSceneMgr::~CSceneMgr()
 
 void CSceneMgr::Release()
 {
-}
-
-void CSceneMgr::InitCurrentStage()
-{
-	m_currentStage = 0;
 }
 
 void CSceneMgr::DisPlayTitle()
@@ -75,17 +70,17 @@ void CSceneMgr::DisPlayTitle()
 
 void CSceneMgr::DisplayScoreAndStage()
 {
-	int iCurrentScore = CGameMgr::Get_Instance()->GetCurrentScore();
 	HDC m_DC = GetDC(g_hWnd);
+	int iCurrentScore = CGameMgr::Get_Instance()->GetCurrentScore();
 
 	TCHAR	szBuffEnd[32] = L"";
 	TCHAR	szBuffScore[32] = L"";
 	TCHAR	szBuffStage[32] = L"";
 
-
+	int currentStage = CGameMgr::Get_Instance()->GetCurrentStage();
 	swprintf_s(szBuffEnd, L"종료");	// 모든 서식 문자를 지원
 	swprintf_s(szBuffScore, L"현재 점수 : %d", iCurrentScore);	// 모든 서식 문자를 지원
-	swprintf_s(szBuffStage, L"현재 스테이지 : %d", m_currentStage);	// 모든 서식 문자를 지원
+	swprintf_s(szBuffStage, L"현재 스테이지 : %d", currentStage);	// 모든 서식 문자를 지원
 
 	TextOut(m_DC,		// 문자열을 복사할 화면 dc
 		WINCX * 0.5 - 20.f,			// 출력할 윈도우의 x,y 위치를 전달
@@ -106,14 +101,12 @@ void CSceneMgr::DisplayScoreAndStage()
 		lstrlen(szBuffStage)); // 문자열의 순수 길이
 }
 
-void CSceneMgr::Retry()
+void CSceneMgr::DisplayGameOver()
 {
 	HDC m_DC = GetDC(g_hWnd);
 	Rectangle(m_DC, 0, 0, WINCX, WINCY);
-
-	m_currentStage = 0;
-	CGameMgr::Get_Instance()->InitCurrentScore();
 	DisplayScoreAndStage();
+
 	DWORD tick = GetTickCount64();
 	float second = 5;
 	while (true)
@@ -124,4 +117,5 @@ void CSceneMgr::Retry()
 			break;
 		}
 	}
+	Rectangle(m_DC, 0, 0, WINCX, WINCY);
 }

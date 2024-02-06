@@ -37,5 +37,20 @@ enum OBJID
 	OBJ_ITEM,
 	OBJ_END
 };
+enum SCENEID
+{
+	SCENE_1,
+	SCENE_2,
+	SCENE_3,
+	SCENE_END
+};
+
+enum GAMESTATE
+{
+	GAME_START,
+	GAME_RUNNING,
+	GAME_OVER,
+	GAME_EXIT
+};
 
 extern HWND g_hWnd;
