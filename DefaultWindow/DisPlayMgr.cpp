@@ -1,23 +1,24 @@
 #include "stdafx.h"
-#include "SceneMgr.h"
+#include "DisPlayMgr.h"
 #include "GameMgr.h"
 #include "Define.h"
 
-CSceneMgr* CSceneMgr::m_pInstance = nullptr;
-CSceneMgr::CSceneMgr()
+CDisplayMgr* CDisplayMgr::m_pInstance = nullptr;
+
+CDisplayMgr::CDisplayMgr()
 {
 }
 
-CSceneMgr::~CSceneMgr()
+CDisplayMgr::~CDisplayMgr()
 {
 	Release();
 }
 
-void CSceneMgr::Release()
+void CDisplayMgr::Release()
 {
 }
 
-void CSceneMgr::DisPlayTitle()
+void CDisplayMgr::DisPlayTitle()
 {
 	HDC m_DC = GetDC(g_hWnd);
 
@@ -68,7 +69,7 @@ void CSceneMgr::DisPlayTitle()
 	}
 }
 
-void CSceneMgr::DisplayScoreAndStage()
+void CDisplayMgr::DisplayScoreAndStage()
 {
 	HDC m_DC = GetDC(g_hWnd);
 	int iCurrentScore = CGameMgr::Get_Instance()->GetCurrentScore();
@@ -101,7 +102,7 @@ void CSceneMgr::DisplayScoreAndStage()
 		lstrlen(szBuffStage)); // 문자열의 순수 길이
 }
 
-void CSceneMgr::DisplayGameOver()
+void CDisplayMgr::DisplayGameOver()
 {
 	HDC m_DC = GetDC(g_hWnd);
 	Rectangle(m_DC, 0, 0, WINCX, WINCY);
@@ -119,3 +120,4 @@ void CSceneMgr::DisplayGameOver()
 	}
 	Rectangle(m_DC, 0, 0, WINCX, WINCY);
 }
+

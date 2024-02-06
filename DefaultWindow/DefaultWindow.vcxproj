@@ -159,8 +159,12 @@
     <ClInclude Include="ObjMgr.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Resource.h" />
-    <ClInclude Include="SceneMgr.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="DisPlayMgr.h" />
     <ClInclude Include="GameMgr.h" />
+    <ClInclude Include="Scene_1.h" />
+    <ClInclude Include="Scene_2.h" />
+    <ClInclude Include="Scene_3.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
@@ -176,8 +180,12 @@
     <ClCompile Include="Obj.cpp" />
     <ClCompile Include="ObjMgr.cpp" />
     <ClCompile Include="Player.cpp" />
-    <ClCompile Include="SceneMgr.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="DisPlayMgr.cpp" />
     <ClCompile Include="GameMgr.cpp" />
+    <ClCompile Include="Scene_1.cpp" />
+    <ClCompile Include="Scene_2.cpp" />
+    <ClCompile Include="Scene_3.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

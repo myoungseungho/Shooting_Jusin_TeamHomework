@@ -13,8 +13,8 @@ HINSTANCE hInst;                                // 현재 인스턴스입니다.
 WCHAR szTitle[MAX_LOADSTRING];                  // 제목 표시줄 텍스트입니다.
 WCHAR szWindowClass[MAX_LOADSTRING];            // 기본 창 클래스 이름입니다.
 HWND	g_hWnd;
+
 GAMESTATE game_State = GAME_START;
-bool bGameOver = false;
 
 // 이 코드 모듈에 들어 있는 함수의 정방향 선언입니다.
 ATOM                MyRegisterClass(HINSTANCE hInstance);	// 생성할 창의 각종 스타일 지정 함수
@@ -86,8 +86,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,				// 메모리에 할당되는 실체, 즉
 				game_State = GAME_RUNNING;
 				break;
 			case GAME_RUNNING:
-				bGameOver = CGameMgr::Get_Instance()->Check_GameOver();
-				if (!bGameOver)
+				if (!CGameMgr::Get_Instance()->bGameEnd)
 				{
 					if (dwTime + 10 < GetTickCount64())
 					{
@@ -98,13 +97,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,				// 메모리에 할당되는 실체, 즉
 					}
 				}
 				else
-				{
-					CGameMgr::Get_Instance()->OnGameEnd();
 					game_State = GAME_OVER;
-				}
+
 				break;
 			case GAME_OVER:
-				CGameMgr::Get_Instance()->bPlayerDie = false;
+				CGameMgr::Get_Instance()->bGameEnd = false;
 				game_State = GAME_START;
 				break;
 			case GAME_EXIT:

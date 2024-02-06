@@ -5,7 +5,7 @@
 #include "ObjMgr.h"
 
 CGameMgr* CGameMgr::m_pInstance = nullptr;
-CGameMgr::CGameMgr() : m_iCurrentScore(0.f), m_MaxStage(SCENE_3), m_currentStage(SCENE_1), bPlayerDie(false)
+CGameMgr::CGameMgr() : m_iCurrentScore(0.f), m_MaxStage(SCENE_3), m_currentStage(SCENE_1), bGameEnd(false)
 {
 }
 
@@ -19,27 +19,60 @@ void CGameMgr::Release()
 }
 
 
-bool CGameMgr::OnGameEnd()
+void CGameMgr::InitCurrentScore()
 {
-	if (!Check_GameOver())
-		return false;
+	m_iCurrentScore = 0.f;
+}
 
+int CGameMgr::GetCurrentScore()
+{
+	return m_iCurrentScore;
+}
+
+void CGameMgr::SetCurrentScore(int _iAddScore)
+{
+	m_iCurrentScore += _iAddScore;
+}
+
+void CGameMgr::InitCurrentStage()
+{
+	m_currentStage = SCENE_1;
+}
+
+int CGameMgr::GetCurrentStage()
+{
+	return m_currentStage;
+}
+
+void CGameMgr::StageUp()
+{
+	m_currentStage = static_cast<SCENEID>(static_cast<int>(m_currentStage) + 1);
+
+	//스테이지 업
+	if (m_currentStage != SCENE_END)
+	{
+		//아이템, 적 제거, 불렛 제거
+		CObjMgr::Get_Instance()->RemoveAllObjectsExceptPlayer();
+
+		//화면 갱신
+		HDC m_DC = GetDC(g_hWnd);
+		Rectangle(m_DC, 0, 0, WINCX, WINCY);
+	}
+	else
+		OnGameEnd();
+}
+
+
+void CGameMgr::OnGameEnd()
+{
 	//아이템, 적 제거, 불렛 제거
 	CObjMgr::Get_Instance()->RemoveAllObjectsExceptPlayer();
 	//게임 종료 디스플레이
-	CSceneMgr::Get_Instance()->DisplayGameOver();
+	CDisplayMgr::Get_Instance()->DisplayGameOver();
 	//현재 점수 초기화
 	InitCurrentScore();
 	//현재 스테이지 초기화
 	InitCurrentStage();
 
-	return true;
-}
-
-bool CGameMgr::Check_GameOver()
-{
-	if (m_currentStage == SCENE_END || bPlayerDie == true)
-		return true;
-	else
-		return false;
+	bGameEnd = true;
 }

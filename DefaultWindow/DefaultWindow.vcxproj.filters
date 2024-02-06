@@ -37,9 +37,6 @@
     <Filter Include="02. Design\SingletonMgr">
       <UniqueIdentifier>{7b41f79a-494b-4935-9cf1-03f91e336af8}</UniqueIdentifier>
     </Filter>
-    <Filter Include="02. Design\SceneMgr">
-      <UniqueIdentifier>{90f3a24f-369d-4b4d-9d59-1f415396fa9b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="01. Obj\03. Item">
       <UniqueIdentifier>{e85c4862-8857-4ebd-8c52-562aaa545c94}</UniqueIdentifier>
     </Filter>
@@ -51,6 +48,21 @@
     </Filter>
     <Filter Include="02. Design\ObjMgr">
       <UniqueIdentifier>{4c54150d-3a7d-4d53-8c18-e563be006605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene">
+      <UniqueIdentifier>{15fcec15-c175-4907-8975-b3dfa56f8b58}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene\01. Scene_1">
+      <UniqueIdentifier>{f8309db4-0c80-4bc4-8fad-ebb611e81fb2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene\02. Scene_2">
+      <UniqueIdentifier>{7c2b5c12-fc58-4bbe-b1eb-7b36f78293da}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="03. Scene\03. Scene_3">
+      <UniqueIdentifier>{d0386f5a-536e-4b98-ab98-85599e7712eb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Design\DisplayMgr">
+      <UniqueIdentifier>{90f3a24f-369d-4b4d-9d59-1f415396fa9b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -96,8 +108,8 @@
     <ClInclude Include="GameMgr.h">
       <Filter>02. Design\SingletonMgr</Filter>
     </ClInclude>
-    <ClInclude Include="SceneMgr.h">
-      <Filter>02. Design\SceneMgr</Filter>
+    <ClInclude Include="DisPlayMgr.h">
+      <Filter>02. Design\DisplayMgr</Filter>
     </ClInclude>
     <ClInclude Include="Item.h">
       <Filter>01. Obj\03. Item</Filter>
@@ -110,6 +122,18 @@
     </ClInclude>
     <ClInclude Include="ObjMgr.h">
       <Filter>02. Design\ObjMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene.h">
+      <Filter>03. Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_1.h">
+      <Filter>03. Scene\01. Scene_1</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_2.h">
+      <Filter>03. Scene\02. Scene_2</Filter>
+    </ClInclude>
+    <ClInclude Include="Scene_3.h">
+      <Filter>03. Scene\03. Scene_3</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -137,8 +161,8 @@
     <ClCompile Include="Bullet.cpp">
       <Filter>01. Obj\01. Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="SceneMgr.cpp">
-      <Filter>02. Design\SceneMgr</Filter>
+    <ClCompile Include="DisPlayMgr.cpp">
+      <Filter>02. Design\DisplayMgr</Filter>
     </ClCompile>
     <ClCompile Include="GameMgr.cpp">
       <Filter>02. Design\SingletonMgr</Filter>
@@ -154,6 +178,18 @@
     </ClCompile>
     <ClCompile Include="ObjMgr.cpp">
       <Filter>02. Design\ObjMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>03. Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_1.cpp">
+      <Filter>03. Scene\01. Scene_1</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_2.cpp">
+      <Filter>03. Scene\02. Scene_2</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene_3.cpp">
+      <Filter>03. Scene\03. Scene_3</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

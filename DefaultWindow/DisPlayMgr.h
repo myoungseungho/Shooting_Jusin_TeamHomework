@@ -1,16 +1,16 @@
 #pragma once
-class CSceneMgr
+class CDisplayMgr
 {
 private:
-	CSceneMgr();
-	virtual ~CSceneMgr();
+	CDisplayMgr();
+	virtual ~CDisplayMgr();
 public:
 	void	Release();
 public:
-	static		CSceneMgr* Get_Instance()
+	static		CDisplayMgr* Get_Instance()
 	{
 		if (!m_pInstance)
-			m_pInstance = new CSceneMgr;
+			m_pInstance = new CDisplayMgr;
 
 		return m_pInstance;
 	}
@@ -30,6 +30,6 @@ public:
 	void DisplayGameOver();
 
 private:
-	static CSceneMgr* m_pInstance;
+	static CDisplayMgr* m_pInstance;
 };
 
