@@ -87,9 +87,6 @@
     <ClInclude Include="SceneMgr.h">
       <Filter>02. Design\SceneMgr</Filter>
     </ClInclude>
-    <ClInclude Include="Manager.h">
-      <Filter>02. Design</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -121,9 +118,6 @@
     </ClCompile>
     <ClCompile Include="SingleTon.cpp">
       <Filter>02. Design\SingletonMgr</Filter>
-    </ClCompile>
-    <ClCompile Include="Manager.cpp">
-      <Filter>02. Design</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

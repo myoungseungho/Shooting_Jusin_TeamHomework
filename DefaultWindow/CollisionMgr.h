@@ -2,7 +2,7 @@
 #include "stdafx.h"
 #include "Obj.h"
 #include "Manager.h"
-class CCollisionMgr : public CManager
+class CCollisionMgr
 {
 public:
 	CCollisionMgr();

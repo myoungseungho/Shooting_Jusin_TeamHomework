@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "MainGame.h"
-
+#include "SceneMgr.h"
 
 
 CMainGame::CMainGame()
@@ -16,10 +16,6 @@ CMainGame::~CMainGame()
 void CMainGame::Initialize()
 {
 	m_DC = GetDC(g_hWnd);
-
-
-	CManager::GetInstance<CSingleton>();
-
 
 	//플레이어 생성
 	m_ObjList[OBJ_PLAYER].push_back(CAbstractFactory<CPlayer>::Create());
@@ -70,6 +66,8 @@ void CMainGame::Render()
 			iter->Render(m_DC);
 		}
 	}
+
+	CSceneMgr::DisplayScoreAndStage();
 }
 
 void CMainGame::Release()

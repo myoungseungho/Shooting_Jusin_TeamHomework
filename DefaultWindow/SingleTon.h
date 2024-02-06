@@ -1,11 +1,14 @@
 #pragma once
-#include "Manager.h"
-class CSingleton : public CManager
+class CSingleton
 {
 private:
 	CSingleton();
-	friend class CManager;
 	virtual ~CSingleton();
 public:
+	static int GetCurrentScore();
+	static void SetCurrentScore(int _iAddScore);
+private:
+	static int m_iCurrentScore;
 };
+
 
