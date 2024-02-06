@@ -5,6 +5,7 @@
 #include "Bullet.h"
 #include "Monster.h"
 #include "AbstractFactory.h"
+#include "CollisionMgr.h"
 #include <algorithm>
 #include "SingleTon.h"
 

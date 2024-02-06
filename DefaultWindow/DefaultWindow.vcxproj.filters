@@ -40,6 +40,15 @@
     <Filter Include="02. Design\SceneMgr">
       <UniqueIdentifier>{90f3a24f-369d-4b4d-9d59-1f415396fa9b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="01. Obj\03. Item">
+      <UniqueIdentifier>{e85c4862-8857-4ebd-8c52-562aaa545c94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\03. Item\01. AttackItem">
+      <UniqueIdentifier>{ba1cdd88-3495-46d1-a534-6e64e21fa522}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="01. Obj\03. Item\02. LifeItem">
+      <UniqueIdentifier>{e538b869-8d83-4b75-8b03-abddf15b3035}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -87,6 +96,15 @@
     <ClInclude Include="SceneMgr.h">
       <Filter>02. Design\SceneMgr</Filter>
     </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>01. Obj\03. Item</Filter>
+    </ClInclude>
+    <ClInclude Include="AttackItem.h">
+      <Filter>01. Obj\03. Item\01. AttackItem</Filter>
+    </ClInclude>
+    <ClInclude Include="LifeItem.h">
+      <Filter>01. Obj\03. Item\02. LifeItem</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -118,6 +136,15 @@
     </ClCompile>
     <ClCompile Include="SingleTon.cpp">
       <Filter>02. Design\SingletonMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>01. Obj\03. Item</Filter>
+    </ClCompile>
+    <ClCompile Include="AttackItem.cpp">
+      <Filter>01. Obj\03. Item\01. AttackItem</Filter>
+    </ClCompile>
+    <ClCompile Include="LifeItem.cpp">
+      <Filter>01. Obj\03. Item\02. LifeItem</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

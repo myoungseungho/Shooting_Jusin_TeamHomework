@@ -2,7 +2,6 @@
 #include "MainGame.h"
 #include "SceneMgr.h"
 
-
 CMainGame::CMainGame()
 	:m_DC(NULL), m_pPlayer(nullptr)
 {
@@ -53,6 +52,8 @@ void CMainGame::Late_Update()
 			iter->Late_Update();
 		}
 	}
+
+	CCollisionMgr::Collision_Rect(m_ObjList[OBJ_PLAYER], m_ObjList[OBJ_ITEM]);
 }
 
 void CMainGame::Render()
