@@ -2,6 +2,7 @@
 #include "MainGame.h"
 
 
+
 CMainGame::CMainGame()
 	:m_DC(NULL), m_pPlayer(nullptr)
 {
@@ -15,6 +16,10 @@ CMainGame::~CMainGame()
 void CMainGame::Initialize()
 {
 	m_DC = GetDC(g_hWnd);
+
+
+	CManager::GetInstance<CSingleton>();
+
 
 	//플레이어 생성
 	m_ObjList[OBJ_PLAYER].push_back(CAbstractFactory<CPlayer>::Create());

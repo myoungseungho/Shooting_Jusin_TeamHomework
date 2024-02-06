@@ -34,6 +34,12 @@
     <Filter Include="01. Obj\02. Moster">
       <UniqueIdentifier>{2b0ef2e9-c97b-4f9f-b072-2526135cb50f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="02. Design\SingletonMgr">
+      <UniqueIdentifier>{7b41f79a-494b-4935-9cf1-03f91e336af8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="02. Design\SceneMgr">
+      <UniqueIdentifier>{90f3a24f-369d-4b4d-9d59-1f415396fa9b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -75,6 +81,15 @@
     <ClInclude Include="Bullet.h">
       <Filter>01. Obj\01. Bullet</Filter>
     </ClInclude>
+    <ClInclude Include="SingleTon.h">
+      <Filter>02. Design\SingletonMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneMgr.h">
+      <Filter>02. Design\SceneMgr</Filter>
+    </ClInclude>
+    <ClInclude Include="Manager.h">
+      <Filter>02. Design</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -100,6 +115,15 @@
     </ClCompile>
     <ClCompile Include="Bullet.cpp">
       <Filter>01. Obj\01. Bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="SceneMgr.cpp">
+      <Filter>02. Design\SceneMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="SingleTon.cpp">
+      <Filter>02. Design\SingletonMgr</Filter>
+    </ClCompile>
+    <ClCompile Include="Manager.cpp">
+      <Filter>02. Design</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

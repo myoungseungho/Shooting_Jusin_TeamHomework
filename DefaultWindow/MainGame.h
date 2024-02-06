@@ -6,6 +6,7 @@
 #include "Monster.h"
 #include "AbstractFactory.h"
 #include <algorithm>
+#include "SingleTon.h"
 
 class CMainGame
 {
