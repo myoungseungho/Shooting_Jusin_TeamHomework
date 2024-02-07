@@ -53,4 +53,10 @@ enum GAMESTATE
 	GAME_EXIT
 };
 
+enum ITEMDIR
+{
+	ITEMDIR_DOWN,
+	ITEMDIR_
+};
+
 extern HWND g_hWnd;

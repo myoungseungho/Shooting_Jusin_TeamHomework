@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameMgr.h"
-#include "SceneMgr.h"
+#include "DisPlayMgr.h"
 #include "Define.h"
 #include "ObjMgr.h"
 

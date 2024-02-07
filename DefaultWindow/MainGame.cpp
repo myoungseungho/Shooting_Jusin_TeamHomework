@@ -20,7 +20,7 @@ void CMainGame::Initialize()
 
 	//타이틀 화면 호출
 	CDisplayMgr::Get_Instance()->DisPlayTitle();
-
+	
 	if (m_Scene_1 == nullptr)
 		m_Scene_1 = new CScene_1;
 	if (m_Scene_2 == nullptr)
@@ -30,7 +30,7 @@ void CMainGame::Initialize()
 }
 
 void CMainGame::Update()
-{
+{ 
 	//모든 오브젝트 Update
 	CObjMgr::Get_Instance()->Update();
 
@@ -55,22 +55,22 @@ void CMainGame::Update()
 	case SCENE_2:
 		dynamic_cast<CScene_2*>(m_Scene_2)->Update();
 		// 2씬 보스 제거
-		if (/*IsStage2Clear()*/)
-		{
-			// 다음 스테이지로 넘어가기 위한 준비 작업
-			CGameMgr::Get_Instance()->StageUp();
-		}
+		//if (/*IsStage2Clear()*/)
+		//{
+		//	// 다음 스테이지로 넘어가기 위한 준비 작업
+		//	CGameMgr::Get_Instance()->StageUp();
+		//}
 		break;
 	case SCENE_3:
 		// 세 번째 스테이지에서 수행할 작업들
 		dynamic_cast<CScene_3*>(m_Scene_3)->Update();
 
 		// 3씬 보스 제거
-		if (/*IsStage3Clear()*/)
-		{
-			// 다음 스테이지로 넘어가기 위한 준비 작업
-			CGameMgr::Get_Instance()->StageUp();
-		}
+		//if (/*IsStage3Clear()*/)
+		//{
+		//	// 다음 스테이지로 넘어가기 위한 준비 작업
+		//	CGameMgr::Get_Instance()->StageUp();
+		//}
 		break;
 	}
 
